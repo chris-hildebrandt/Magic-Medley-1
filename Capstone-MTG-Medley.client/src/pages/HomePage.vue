@@ -5,7 +5,7 @@
         <div @click="searchPage()"
           class="col-3 bg-left text-light rounded d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
-            <h1 class="effect">Search for your cards</h1>
+            <h1 class="effect">Search for Cards</h1>
           </div>
         </div>
         <div @click="guildPage()"
@@ -95,6 +95,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h1 {
+  font-size: 3rem !important;
+  text-shadow: 1px 1px 3px black;
+}
+
 a {
   text-decoration: none;
   color: inherit;

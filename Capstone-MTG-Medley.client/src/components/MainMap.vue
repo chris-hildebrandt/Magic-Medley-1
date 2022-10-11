@@ -44,7 +44,10 @@ export default {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       })
 
-      const userInput = document.getElementById('pac-input')
+      let userInput = document.getElementById('pac-input')
+
+      // userInput = userInput + "in boise"
+
 
       const searchBox = new google.maps.places.SearchBox(userInput)
 
@@ -281,7 +284,7 @@ export default {
 
 <style scoped lang="scss">
 #map {
-  height: 100vh;
+  height: 75vh;
   width: 100%;
   border: 3px solid black;
   border-radius: 20px;

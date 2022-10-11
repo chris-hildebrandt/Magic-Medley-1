@@ -23,6 +23,7 @@ export const AppState = reactive({
   duplicates: [],
   missingCards: [],
   activeDeck: {},
+  gruulDeck: {},
   profileCollection: [],
   collection: [],
   currentLocation: "",
@@ -54,4 +55,5 @@ export const AppState = reactive({
   members: [],
 
   accountAddress: {},
+  locations: null
 });

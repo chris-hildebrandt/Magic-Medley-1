@@ -14,7 +14,7 @@
     <div class="col-2 text-center text-my-light xsFont" data-bs-toggle="modal" data-bs-target="#faqsModal">
       FAQs
     </div>
-    <div class="col-2 text-center text-my-light xsFont">Site Tour</div>
+    <!-- <div class="col-2 text-center text-my-light xsFont">Site Tour</div> -->
     <!-- NOTE modal is located in the contact us component -->
     <div class="col-2 text-center text-my-light xsFont" data-bs-toggle="modal" data-bs-target="#legalModal">
       Legal

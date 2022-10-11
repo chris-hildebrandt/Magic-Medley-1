@@ -8,10 +8,13 @@
     <div class="col-12">
       <section class="row">
         <div class="col-md-12 text-center">
-          <div class="row justify-content-center mt-4">
+          <div class="row justify-content-center">
             <div class="col-md-8">
               <div>
-                <img src="../assets/img/mtg-guilds/guildofrav_mtg.webp" alt="" />
+                <img
+                  src="../assets/img/mtg-guilds/guildofrav_mtg.webp"
+                  alt=""
+                />
               </div>
             </div>
 
@@ -339,7 +342,7 @@
   </div>
 
   <!-- NOTE this was to create a guild -->
-  <div class="col-md-3">
+  <!-- <div class="col-md-3">
     <div class="text-end">
       <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
         <i class="mdi mdi-plus fs-3"></i>
@@ -347,7 +350,7 @@
       </button>
       <GuildForm />
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -517,7 +520,7 @@ button:hover {
   max-width: 100vw;
   overflow-x: scroll;
 
-  >div {
+  > div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }

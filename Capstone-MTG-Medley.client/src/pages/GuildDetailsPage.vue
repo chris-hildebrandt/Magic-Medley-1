@@ -34,48 +34,129 @@
         <span class="fs-5">Leave Guild</span>
       </button>
     </section>
-    <!-- NOTE DECK -->
-    <section class="col-md-12 my-3">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
-            <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
-              <b>
-                Starter Deck
-              </b>
-            </div>
-          </div>
-        </div>
-        <section class="col-9 rounded guild-container-bg">
-          <div class="row align-items-center">
-            <div class="col-1 text-center" @click="scrollLeft">
-              <i class="button-style mdi mdi-chevron-left"></i>
-            </div>
-            <div class="col-10">
-              <div class="row guild-cards-container">
-                <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
-                  <GuildCard :guild="g" />
-                </div>
-              </div>
-            </div>
-            <div class="col-1 text-center" @click="scrollRight">
-              <i class="button-style mdi mdi-chevron-right"></i>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
+
     <!-- NOTE Background & Map Row -->
     <div class="col-md-12">
       <div class="row justify-content-evenly">
-        <section class="col-md-6">
-          <div class="card p-3 azorius-bg elevation-4">
-            <h4>
-              {{ activeGuild.name }} Background
-            </h4>
-            {{activeGuild.background}}
+        <section class="col-md-6 azorius-deck">
+
+
+
+
+
+          <div class="accordion mt-3" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  <h4>
+                    {{ activeGuild.name }} Background
+                  </h4>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <span class="d-flex ">
+                    Starter Deck:
+                    <!-- Giant list of router links... -->
+                    <p class="ms-3">
+                      <!-- Gruul -->
+                    <div v-if="activeGuild.id == '633f67b879b4cee7da9c9829'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fbd9a9268b4aaceff2c3b' } }">
+                        Gruul Wildling
+                      </router-link>
+                    </div>
+                    <!-- Simic -->
+                    <div v-if="activeGuild.id == '633f676979b4cee7da9c981b'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fd64f9268b4aaceff30ff' } }">
+                        Simic Mutology
+                      </router-link>
+                    </div>
+                    <!-- Boros -->
+                    <div v-if="activeGuild.id == '633f670e79b4cee7da9c97f9'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fd8df9268b4aaceff31a1' } }">
+                        Charge of the Boros
+                      </router-link>
+                    </div>
+                    <!-- Golgari -->
+                    <div v-if="activeGuild.id == '633f669e79b4cee7da9c97eb'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fdc9d9268b4aaceff32b4' } }">
+                        Golgari Deathcreep
+                      </router-link>
+                    </div>
+                    <!-- Izzet -->
+                    <div v-if="activeGuild.id == '633f5db679b4cee7da9c97c5'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fccb39268b4aaceff2fbe' } }">
+                        Izzet Gizmometry
+                      </router-link>
+                    </div>
+                    <!-- Orzhov -->
+                    <div v-if="activeGuild.id == '633f5cba79b4cee7da9c97ad'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fd25f9268b4aaceff302c' } }">
+                        Code of the Orzhov
+                      </router-link>
+                    </div>
+                    <!-- Selesnya -->
+                    <div v-if="activeGuild.id == '633f5c3e79b4cee7da9c9795'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fde9a9268b4aaceff3328' } }">
+                        Selesnya United
+                      </router-link>
+                    </div>
+                    <!-- Rakdos -->
+                    <div v-if="activeGuild.id == '633f5bb579b4cee7da9c9787'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fd78c9268b4aaceff3149' } }">
+                        Rakdos Bloodsport
+                      </router-link>
+                    </div>
+                    <!-- Dimir -->
+                    <div v-if="activeGuild.id == '633f5ad479b4cee7da9c976f'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fdb1a9268b4aaceff323a' } }">
+                        Dimir Intrigues
+                      </router-link>
+                    </div>
+                    <!-- Azorius -->
+                    <div v-if="activeGuild.id == '633f5a6579b4cee7da9c9757'">
+                      <router-link :to="{ name: 'DeckDetails', params: { deckId: '633fd3eb9268b4aaceff305b' } }">
+                        Azorius Ascendant
+                      </router-link>
+                    </div>
+                    </p>
+                  </span>
+
+                  {{activeGuild.background}}
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Map results
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body limit-size">
+                  <p v-if="locations == null">
+                    Please search for locations
+                  </p>
+                  <ul v-else v-for="l in locations" :key="l.name">
+                    <li :location="l">{{l.name}} <br> {{l.formatted_address}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
+
         </section>
+        <!-- <div class="col-md-3">
+          <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
+            <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
+
+            </div>
+          </div>
+        </div> -->
         <!-- MAP -->
         <section class="col-md-6">
           <MainMap />
@@ -130,9 +211,10 @@ export default {
     }
     onMounted(() => {
       getGuildById();
-      getGuildMembers();
+      getGuildMembers()
     });
     return {
+      locations: computed(() => AppState.locations),
       message: computed(() => AppState.messages),
       activeGuild: computed(() => AppState.activeGuild),
       members: computed(() => AppState.members),
@@ -229,7 +311,7 @@ export default {
 }
 
 .gruul-bg {
-  background: rgba(196, 211, 202, 0.5);
+  background: rgba(49, 49, 49, 0.5);
   text-shadow: 1px 1px 3px black;
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
@@ -243,6 +325,11 @@ export default {
   color: #f0f0f0 !important;
   border: none;
   width: 90%;
+}
+
+.limit-size {
+  max-height: 50vh !important;
+  overflow-y: scroll;
 }
 
 .btn:hover {
@@ -260,9 +347,11 @@ export default {
   background-image: v-bind(cardImg);
   background-size: cover;
   background-position: center;
-  min-height: 20em;
-  width: 75%;
+  // min-height: 20em;
+  max-height: 75vh;
+  // width: 75%;
   color: #0f0f0f !important;
+  border-radius: 13px;
 }
 
 .buttonHeight {

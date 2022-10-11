@@ -3,7 +3,7 @@
     <div>
       <div class="px-2">
         <button type="button" class="btn-close text-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        <div class="text-start"><b>Members Online:</b><span class="px-2" id="user-count">{{activeGuild.members}}</span>
+        <div class="text-start"><b>Members:</b><span class="px-2" id="user-count">{{activeGuild.members}}</span>
         </div>
         <br>
 

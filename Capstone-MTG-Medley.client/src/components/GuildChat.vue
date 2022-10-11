@@ -6,7 +6,7 @@
           <button class="accordion-button p-2 chat-color d-flex flex-column" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <h3 class="m-0">{{ activeGuild.name }}</h3>
-            <div><b>Members Online:</b><span class="p-2" id="user-count">0</span></div>
+            <div><b>Members:</b><span class="p-2" id="user-count">0</span></div>
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
@@ -98,7 +98,7 @@ input {
   border-color: #3e4042 !important;
 }
 
-  *::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: initial !important;
 }
 
