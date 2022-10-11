@@ -47,7 +47,7 @@ class DecksService {
   async rateDeck(rating, deckId, accountId) {
     const res = await api.put("/api/decks/" + deckId + "/" + accountId, rating);
     AppState.activeDeck = res.data;
-    console.log(res);
+    // console.log(res);
     // AppState.activeDeck = res.data
   }
 
@@ -55,29 +55,30 @@ class DecksService {
     const res = await this.getDeckById(deckId);
     AppState.activeDeck = res;
     logger.log(res);
-    console.log(AppState.activeDeck);
+    // console.log(AppState.activeDeck);
   }
 
-  async cloneDeck(){
-    let newDeck = {}
-    newDeck.picture = AppState.activeDeck.picture
-    newDeck.name = AppState.activeDeck.name+' copy'
-    newDeck.creatorId = AppState.activeDeck.creatorId || AppState.activeDeck.accountId
-    newDeck.accountId = AppState.account.id
-    console.log(newDeck)
-    const deck = await this.createDeck(newDeck)
-    AppState.duplicates.forEach(d => {
+  async cloneDeck() {
+    let newDeck = {};
+    newDeck.picture = AppState.activeDeck.picture;
+    newDeck.name = AppState.activeDeck.name + " copy";
+    newDeck.creatorId =
+      AppState.activeDeck.creatorId || AppState.activeDeck.accountId;
+    newDeck.accountId = AppState.account.id;
+    // console.log(newDeck)
+    const deck = await this.createDeck(newDeck);
+    AppState.duplicates.forEach((d) => {
       let newCard = {
         cardId: d.cardId,
         deckId: deck.id,
         accountId: AppState.account.id,
         card: d.card,
-        quantity: d.quantity
-      }
-      deckCardsService.createDeckCard(newCard)
-    })
-    Pop.success(`You cloned ${AppState.activeDeck.name}!`)
-    await cardsService.cloneCards()
+        quantity: d.quantity,
+      };
+      deckCardsService.createDeckCard(newCard);
+    });
+    Pop.success(`You cloned ${AppState.activeDeck.name}!`);
+    await cardsService.cloneCards();
   }
 }
 

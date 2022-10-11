@@ -40,6 +40,7 @@ import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
 import FooterNav from "../components/FooterNav.vue";
 import { useRoute, useRouter } from "vue-router";
+import { logger } from "../utils/Logger";
 
 export default {
   setup() {
@@ -65,7 +66,7 @@ export default {
         try {
           router.push({ name: "Search", params: {} })
         } catch (error) {
-          console.log(error)
+          logger.log(error)
         }
       },
 
@@ -73,7 +74,7 @@ export default {
         try {
           router.push({ name: "Guild", params: {} })
         } catch (error) {
-          console.log(error)
+          logger.log(error)
         }
       },
 
@@ -81,7 +82,7 @@ export default {
         try {
           router.push({ name: "Collection", params: {} })
         } catch (error) {
-          console.log(error)
+          logger.log(error)
         }
       }
 

@@ -85,7 +85,7 @@ export default {
       deckCard: computed(() => AppState.deckCards),
       reset() {
         AppState.activeCard = props.card;
-        console.log("Active Card:", props.card);
+        logger.log("Active Card:", props.card);
       },
       async getCardByOracle() {
         try {
@@ -99,7 +99,7 @@ export default {
       },
       async removeCardFromDeck() {
         try {
-          console.log(" Id", props.card);
+          logger.log(" Id", props.card);
           // const yes = await Pop.confirm("Remove Card?");
           // if (!yes) {
           //   return;

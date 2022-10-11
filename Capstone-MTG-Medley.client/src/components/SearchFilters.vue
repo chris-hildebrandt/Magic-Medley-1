@@ -418,7 +418,7 @@ export default {
           filter.value['color'] = filter.value['color'].join('').toString();
         }
         // filter.value['rarity'] = filter.value['rarity'].join('').toString();
-        console.log('filer value', filter.value);
+        logger.log('filer value', filter.value);
         await cardsService.getCardsBySearch(query.value, filter.value)
         if (filter.value.color.length > 0) {
           filter.value['color'] = filter.value['color'].split('')

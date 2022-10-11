@@ -106,8 +106,8 @@ import { useRoute, useRouter } from "vue-router";
 
 export default {
   setup() {
-const router = useRouter();
-const route = useRoute();
+    const router = useRouter();
+    const route = useRoute();
 
     function getAccountId() {
       try {
@@ -119,14 +119,14 @@ const route = useRoute();
     }
 
     async function getAccountCards() {
-        try {
-          await cardsService.getAccountCards()
-        }
-        catch (error) {
-          logger.log("[getting all cards]", error);
-          Pop.error(error);
-        }
+      try {
+        await cardsService.getAccountCards()
       }
+      catch (error) {
+        logger.log("[getting all cards]", error);
+        Pop.error(error);
+      }
+    }
 
     onMounted(() => {
       AppState.activeDeck = {}
@@ -173,7 +173,7 @@ const route = useRoute();
             return;
           }
           const deckId = AppState.activeDeck.id
-          console.log('Deck Id:', deckId)
+          // console.log('Deck Id:', deckId)
           await decksService.deleteDeck(deckId)
           AppState.activeDeck = {}
         } catch (error) {

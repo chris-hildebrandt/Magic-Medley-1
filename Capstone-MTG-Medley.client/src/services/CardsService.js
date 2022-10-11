@@ -77,9 +77,9 @@ class CardsService {
       if (filterTerm.toughness) {
         searchTerm += toughnessTerm + filterTerm.toughness;
       }
-      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
+      // console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
-      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
+      // console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
       AppState.searchedCards = [];
       const res = await search.get(baseSearch + searchTerm);
@@ -113,7 +113,7 @@ class CardsService {
 
   async cardsById(oracleCardId) {
     const res = await mtg.get("cards/" + oracleCardId);
-    console.log("Oracle Card Id", res.data);
+    // console.log("Oracle Card Id", res.data);
     AppState.activeCard = res.data;
   }
 
@@ -123,7 +123,7 @@ class CardsService {
       "cards/search?q=oracleid%3A" + oracleId + "&unique=prints"
     );
     AppState.oracleCard = res.data.data.map((c) => new Card(c));
-    console.log("Getting card by oracle", AppState.oracleCard);
+    // console.log("Getting card by oracle", AppState.oracleCard);
   }
 
   async changePage(url) {
@@ -133,7 +133,7 @@ class CardsService {
       ...res.data.data.map((c) => new Card(c)),
     ];
     AppState.nextPage = res.data.next_page;
-    console.log("next page", AppState.nextPage);
+    // console.log("next page", AppState.nextPage);
     AppState.previousPage = res.data.previous_page;
   }
 
@@ -144,9 +144,9 @@ class CardsService {
     return res.data;
   }
 
-  async getCardOracleIdByCardId(cardId){
-    const res = await api.get('/account/cards/' + cardId)
-    return res.data
+  async getCardOracleIdByCardId(cardId) {
+    const res = await api.get("/account/cards/" + cardId);
+    return res.data;
   }
   async removeCard(cardId, cardName) {
     Pop.confirm(
@@ -157,7 +157,11 @@ class CardsService {
       case "none":
         break;
       case "confirm-delete":
-        if (await Pop.confirm("Deleting this card will remove it from any decks you own.")) {
+        if (
+          await Pop.confirm(
+            "Deleting this card will remove it from any decks you own."
+          )
+        ) {
           const res = await api.delete(
             "account/cards/" + cardId + "/deleteall"
           );
@@ -173,15 +177,17 @@ class CardsService {
 
   async cloneCards() {
     AppState.duplicates.forEach(async (d) => {
-      if (AppState.collection.find(c => c.name == d.card.name)) { return }
-      const clonedCard = await this.getCardOracleIdByCardId(d.cardId)
-      clonedCard.id = null
-      clonedCard._id = null
-      clonedCard.accountId = AppState.account.id
-      this.createCard(clonedCard)
-    })
-    await cardsService.getAccountCards()
-    await decksService.getAccountDecks(AppState.account.id)
+      if (AppState.collection.find((c) => c.name == d.card.name)) {
+        return;
+      }
+      const clonedCard = await this.getCardOracleIdByCardId(d.cardId);
+      clonedCard.id = null;
+      clonedCard._id = null;
+      clonedCard.accountId = AppState.account.id;
+      this.createCard(clonedCard);
+    });
+    await cardsService.getAccountCards();
+    await decksService.getAccountDecks(AppState.account.id);
   }
 }
 

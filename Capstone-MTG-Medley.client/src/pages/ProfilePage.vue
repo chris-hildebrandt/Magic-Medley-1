@@ -82,6 +82,7 @@ import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
 import Navbar from "../components/Navbar.vue";
 import { guildsService } from "../services/GuildsService.js";
+import { logger } from "../utils/Logger";
 
 export default {
   setup() {
@@ -102,7 +103,7 @@ export default {
     async function getProfileDecks() {
       try {
         await decksService.getProfileDecks(route.params.profileId);
-        console.log(route.params.profileId);
+        logger.log(route.params.profileId);
       }
       catch (error) {
         Pop.error("[getting profile decks]", error);
@@ -161,7 +162,7 @@ export default {
           // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
         }
         catch (error) {
-          console.log(error);
+          logger.log(error);
         }
       },
 
