@@ -65,7 +65,7 @@ export default {
         try {
           editable.value.guildId = route.params.guildId
           await messagesService.sendMessage(editable.value)
-          console.log(editable.value);
+          logger.log(editable.value);
           editable.value = {}
         } catch (error) {
           logger.error('[sending message]', error)

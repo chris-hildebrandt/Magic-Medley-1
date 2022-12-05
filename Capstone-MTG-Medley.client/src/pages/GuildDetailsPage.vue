@@ -193,7 +193,7 @@ export default {
     async function getGuildById() {
       try {
         await guildsService.getGuildById(route.params.guildId);
-        console.log(AppState.activeGuild);
+        logger.log(AppState.activeGuild);
       }
       catch (error) {
         logger.error("[getting guild by id]", error);
@@ -237,7 +237,7 @@ export default {
           };
           await membersService.joinGuild(newMember);
           Pop.success(`You've joined the ${AppState.activeGuild.name} Guild`);
-          console.log(AppState.members);
+          logger.log(AppState.members);
         }
         catch (error) {
           logger.error("[joining guild]", error);

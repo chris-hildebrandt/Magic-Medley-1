@@ -10,7 +10,10 @@
         <SearchedCards :card="c" />
       </div>
       <div v-if="nextPage" class="row justify-content-center py-3">
-        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">
+        <button
+          @click="changePage(nextPage, page + 1)"
+          class="btn btn-outline-light w-50"
+        >
           More Results
         </button>
       </div>
@@ -117,7 +120,7 @@ main {
   height: 285px;
   width: 225px;
   background-color: black;
-  background-image: url(https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712);
+  background-image: url(https://preview.redd.it/jd2sdm59hdo31.png?auto=webp&s=1990c610a6e2bf9b3120cb6677a94cb58d50045a);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

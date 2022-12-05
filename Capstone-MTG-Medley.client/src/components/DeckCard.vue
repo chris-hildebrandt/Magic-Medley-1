@@ -59,11 +59,11 @@ export default {
             deckCard: computed(() => AppState.deckCards),
             reset() {
                 AppState.activeCard = props.card;
-                console.log("Active Card:", props.card);
+                logger.log("Active Card:", props.card);
             },
             async getCardByOracle() {
                 try {
-                    // console.log(" Id", props.card.oracleId);
+                    // logger.log(" Id", props.card.oracleId);
                     await cardsService.getCardByOracle(props.card.oracle_id);
                 }
                 catch (error) {
