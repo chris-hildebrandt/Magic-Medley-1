@@ -50,7 +50,7 @@ const routes = [
     path: "/:deckId",
     name: "DeckDetails",
     component: loadPage("DeckCollectionPage"),
-    beforeEnter: authGuard,
+    beforeEnter: authSettled,
   },
 ];
 
