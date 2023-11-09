@@ -16,7 +16,7 @@ export class AccountController extends BaseController {
       .get("/cards/:cardId", this.getCardById)
       .post("/cards", this.createCard)
       .put("/cards/:cardId", this.updateCard)
-      .delete("/cards/:cardId/deleteall", this.deleteCardEverywhere)
+      .delete("/cards/:cardId/deleteAll", this.deleteCardEverywhere)
       .delete("/cards/:cardId", this.deleteCard)
       .get("/members", this.getAccountGuildMemberships);
   }
@@ -32,6 +32,8 @@ export class AccountController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      const accountBody = req.body
+      accountBody.id = req.userInfo.id
       const account = await accountService.edit(req.body);
       return res.send(account);
     } catch (error) {

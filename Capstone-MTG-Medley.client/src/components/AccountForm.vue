@@ -82,7 +82,8 @@ export default {
       // account: computed(() => AppState.account),
       async handleSubmit() {
         try {
-          await accountService.edit(editable.value);
+          const accountBody = editable.value
+          await accountService.edit(accountBody);
           router.push({
             name: "Profile",
             params: { profileId: editable.value.id },

@@ -38,7 +38,8 @@ function sanitizeBody(body) {
   const writable = {
     name: body.name,
     picture: body.picture,
-    location: body.location
+    location: body.location,
+    coverImg: body.coverImg
   }
   return writable
 }

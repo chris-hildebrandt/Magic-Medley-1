@@ -13,19 +13,19 @@
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'Collection' }"
-            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30  text-uppercase square buttonPadding">
             Collection
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Search' }"
-            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30  text-uppercase square buttonPadding">
             Search
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Guild' }"
-            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30  text-uppercase square buttonPadding">
             Guild
           </router-link>
         </li>
@@ -75,11 +75,18 @@ a:hover {
 }
 
 .bg-clear {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.096);
+  backdrop-filter: blur(10px);
 }
 
 .img-text {
   color: whitesmoke !important;
   text-shadow: 1px 1px 3px black !important;
+}
+
+.img-text:hover {
+  background-color: rgba(0, 0, 0, 0.041);
+  backdrop-filter: blur(5px);
+    text-shadow: 1px 1px 3px black, 1px 1px 3px black;
 }
 </style>

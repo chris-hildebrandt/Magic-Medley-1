@@ -8,13 +8,25 @@
   <!-- SECTION Profile Details -->
   <div class="row cover-img ">
     <div class="col-4 profile-details anchor-point">
-      <div v-if="profile.id == account.id" title="Edit Account" class="edit-btn">
-        <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class="mdi mdi-pen p-1"></i>
+      <div v-if="isAccount" title="Edit Account" class="edit-btn">
+        <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class=" mdi mdi-pen p-1"></i>
         </router-link>
       </div>
       <img class="img-fluid profile-img" :src="profile.picture" alt="" />
       <div class="glass-card rounded p-3 my-3">
-        <h3>{{ profile.name }}</h3>
+        <div v-if="editProfile.name == false">
+          <h3 >{{ profile.name }} <i @click="editName()" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></h3>
+        </div>
+      <form @submit.prevent="editMyProfile()"  class="row transition-sm" v-else>
+      <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
+          <input @blur.prevent="editName()" v-model="editable.name" id="profileName" class="form-control input-bg"  type="text" minlength="2" maxlength="25" required>
+          <i @click="editName()" title="reset" role="button" type="button" class="bg-lightish fs-5 h-100 input-group-text mdi mdi-undo"></i>
+          <button title="submit form" type="submit" class="bg-lightish rounded-right fs-5 h-100 input-group-text mdi mdi-arrow-right"></button>
+          <span id="editNameInline" class="form-text text-light ps-3 text-shadow"> Must be 2-25 characters long.</span>
+          <div class="underline"></div>
+          <label class="form-label text-shadow ps-4 fs-6" for="profileName">Edit name...</label>
+      </div>
+      </form>
         <p>{{ profile.email }}</p>
         <!-- NOTE we have no bio to add -->
         <!-- <p>{{ profile.bio }}</p> -->
@@ -83,13 +95,15 @@ import Pop from "../utils/Pop";
 import Navbar from "../components/Navbar.vue";
 import { guildsService } from "../services/GuildsService.js";
 import { logger } from "../utils/Logger";
+import { accountService } from "../services/AccountService.js";
 
 export default {
   setup() {
     const scrollPosition = ref(0);
     const router = useRouter();
     const route = useRoute();
-
+    const editable = ref({})
+    const editProfile = ref({name: false, picture: false, email: false, bio: false, coverImg: false, location: false})
     // NOTE this function is getting your profile using the Id, it takes in a users profileId
     async function getProfileById() {
       try {
@@ -128,8 +142,11 @@ export default {
     });
     return {
       route,
+      editProfile,
+      editable,
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
+      isAccount: computed(() => AppState.account == AppState.activeProfile.id ? false : true),
       decks: computed(() => AppState.profileDecks),
       cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
         "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
@@ -165,6 +182,31 @@ export default {
           logger.log(error);
         }
       },
+
+      // MILES ZONE
+
+      async editName() {
+        try {
+          logger.log(editProfile)
+          editProfile.value.name = !editProfile.value.name
+          logger.log(editProfile)
+        } catch (error) {
+          Pop.error(error)
+        }
+      },
+
+      async editMyProfile() {
+        try {
+          logger.log("Editing account")
+          const profileData = editable.value
+          await accountService.edit(profileData)
+          editProfile.value.name = !editProfile.value.name
+          editable.value = {}
+        } catch (error) {
+          logger.error('[ERROR]',error)
+          Pop.error(('[ERROR]'), error.message)
+        }
+      }
 
     };
   },
@@ -228,6 +270,7 @@ export default {
   max-height: 300px;
 }
 
+
 .button-style {
   color: #ffffff;
   text-shadow: 3px 3px 3px black;
@@ -256,6 +299,18 @@ export default {
   }
 }
 
+.bg-lightish {
+  background-color: dimgrey;
+  color: linen;
+  border: 1px solid rgba(0, 0, 0, 0.356) !important;
+}
+
+.bg-lightish:hover {
+  background-color: rgb(73, 73, 73);
+  color: linen;
+  opacity: 1;
+}
+
 
 
 .edit-btn {
@@ -263,4 +318,35 @@ export default {
   top: 110px;
   left: 90px;
 }
+
+.text-shadow {
+  text-shadow: 2px 2px 2px black, 2px 2px 2px black;
+}
+
+.rounded-right {
+  border-top-right-radius: .4rem !important;
+  border-bottom-right-radius: .4rem !important;
+}
+
+
+// INPUTS
+.input-bg {
+  background-color: rgba(0, 0, 0, 0.164);
+}
+
+.input-group {
+  width: auto;
+}
+
+textarea:focus, input:focus {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+input, select, textarea{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+
 </style>

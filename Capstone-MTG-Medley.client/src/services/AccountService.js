@@ -7,7 +7,8 @@ class AccountService {
   async getAccount() {
     try {
       const res = await api.get('/account')
-      AppState.account = res.data
+      logger.log('My Account', new Account(res.data))
+      AppState.account = new Account(res.data)
     } catch (err) {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
@@ -21,6 +22,7 @@ class AccountService {
   async edit(accountData) {
     const res = await api.put('/account', accountData)
     AppState.account = new Account(res.data)
+    AppState.activeProfile = res.data
     console.log(AppState.account);
   }
 }
