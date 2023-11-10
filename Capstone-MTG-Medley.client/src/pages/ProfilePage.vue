@@ -16,7 +16,7 @@
       <div class="glass-card rounded p-3 my-3">
         <!-- Edit Name/Name -->
         <div v-if="!editProfile.name">
-          <h3 >{{ profile.name }} <i @click="editProfile.name = true" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></h3>
+          <h3 >{{ profile.name }} <i @click="editProfile.name = true" title="Edit name" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-dots-horizontal p-1"></i></h3>
         </div>
         <form v-else @submit.prevent="editMyProfile()"  class="row transition-sm">
           <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
@@ -29,7 +29,7 @@
           </div>
         </form>
         <div v-if="!editProfile.email">
-          <p>{{ profile.email }} <i @click="editProfile.email = true" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></p>
+          <p>{{ profile.email }} <i @click="editProfile.email = true" title="Edit email" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-dots-horizontal p-1"></i></p>
         </div>
         <form v-else @submit.prevent="editMyProfile()"  class="row transition-sm">
           <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
