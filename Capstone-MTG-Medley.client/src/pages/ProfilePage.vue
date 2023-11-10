@@ -14,20 +14,33 @@
       </div>
       <img class="img-fluid profile-img" :src="profile.picture" alt="" />
       <div class="glass-card rounded p-3 my-3">
-        <div v-if="editProfile.name == false">
-          <h3 >{{ profile.name }} <i @click="editName()" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></h3>
+        <!-- Edit Name/Name -->
+        <div v-if="!editProfile.name">
+          <h3 >{{ profile.name }} <i @click="editProfile.name = true" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></h3>
         </div>
-      <form @submit.prevent="editMyProfile()"  class="row transition-sm" v-else>
-      <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
-          <input @blur.prevent="editName()" v-model="editable.name" id="profileName" class="form-control input-bg"  type="text" minlength="2" maxlength="25" required>
-          <i @click="editName()" title="reset" role="button" type="button" class="bg-lightish fs-5 h-100 input-group-text mdi mdi-undo"></i>
-          <button title="submit form" type="submit" class="bg-lightish rounded-right fs-5 h-100 input-group-text mdi mdi-arrow-right"></button>
-          <span id="editNameInline" class="form-text text-light ps-3 text-shadow"> Must be 2-25 characters long.</span>
-          <div class="underline"></div>
-          <label class="form-label text-shadow ps-4 fs-6" for="profileName">Edit name...</label>
-      </div>
-      </form>
-        <p>{{ profile.email }}</p>
+        <form v-else @submit.prevent="editMyProfile()"  class="row transition-sm">
+          <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
+              <input @blur.prevent="editName()" v-model="editable.name" id="profileName" class="form-control input-bg"  type="text" minlength="2" maxlength="25" required>
+              <i @click="editProfile.name = false" title="reset" role="button" type="button" class="bg-lightish fs-5 h-100 input-group-text mdi mdi-undo"></i>
+              <button title="submit form" type="submit" class="bg-lightish rounded-right fs-5 h-100 input-group-text mdi mdi-arrow-right"></button>
+              <span id="editNameInline" class="form-text text-light ps-3 text-shadow"> Must be 2-25 characters long.</span>
+              <div class="underline"></div>
+              <label class="form-label text-shadow ps-4 fs-6" for="profileName">Edit name...</label>
+          </div>
+        </form>
+        <div v-if="!editProfile.email">
+          <p>{{ profile.email }} <i @click="editProfile.email = true" role="button" type="button" v-if="isAccount" class="fs-5 mdi mdi-pen p-1"></i></p>
+        </div>
+        <form v-else @submit.prevent="editMyProfile()"  class="row transition-sm">
+          <div class="form-floating input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
+              <input @blur.prevent="editEmail()" v-model="editable.email" id="profileName" class="form-control input-bg"  type="email" required>
+              <i @click="editProfile.email = false; editable.email = null" title="reset" role="button" type="button" class="bg-lightish fs-5 h-100 input-group-text mdi mdi-undo"></i>
+              <button title="submit form" type="submit" class="bg-lightish rounded-right fs-5 h-100 input-group-text mdi mdi-arrow-right"></button>
+              <span id="editEmailInline" class="form-text text-light ps-3 text-shadow"> Must be valid email.</span>
+              <div class="underline"></div>
+              <label class="form-label text-shadow ps-4 fs-6" for="profileName">Edit Email...</label>
+          </div>
+        </form>
         <!-- NOTE we have no bio to add -->
         <!-- <p>{{ profile.bio }}</p> -->
         <p>{{profile.bio}}</p>
@@ -38,10 +51,12 @@
 
     <div class="col-8 profile-decks">
       <div class="row align-items-center">
+
         <div class="col-1 text-center" @click="scrollLeft">
           <i class="button-style mdi mdi-chevron-left"></i>
         </div>
-        <div class="col-10 deck-container-bg rounded">
+        <div class="col-10 deck-container-bg rounded text-center">
+          <p class="fs-1 text-shadow">{{ profile.name }} Decks</p>
           <div class="row deck-cards-container">
             <div v-for="d in decks" :key="d.id" class="card hero-img col-3 px-4 mx-2">
               <div class=" px-3 pt-3 ">

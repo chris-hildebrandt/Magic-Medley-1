@@ -263,13 +263,11 @@ export default {
   overflow-x: hidden;
 }
 
-.cardBorder {
-  border-radius: 20%;
-}
 
 .cardBg {
-  border-radius: 20px;
-  border-color: rgb(142, 142, 142);
+  border-radius: 1.1rem;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788),  0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788), 0px 0px 5px rgba(0, 0, 0, 0.788),;
 }
 
 .printsBg {
@@ -318,6 +316,8 @@ p {
   // display: inline-block;
 }
 
+
+
 /* Tooltip text */
 .tooltipMaybe .tooltiptext {
   visibility: hidden;
@@ -359,8 +359,11 @@ p {
 
 .modal-content {
   height: 100%;
-  border-radius: 0;
+  -webkit-border-radius: 1rem !important;
+  -moz-border-radius: 1rem !important;
+  border-radius: 1rem !important;
   position: relative;
+  background-color: black;
 }
 
 .modal-footer {
@@ -369,4 +372,11 @@ p {
   position: absolute;
   width: 100%;
 }
+
+.card {
+  border-radius: 1rem !important;
+}
+
+
+
 </style>

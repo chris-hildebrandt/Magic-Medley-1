@@ -164,6 +164,7 @@ export default {
 
       noActive() {
         AppState.activeDeck = {}
+        AppState.deckCards = []
       },
 
       async deleteDeck() {
@@ -310,5 +311,13 @@ export default {
     1px -1px 1px #000,
     -1px 1px 1px #000,
     1px 1px 1px #000;
+    transition: ease-in-out .2s;
+    opacity: .9;
 }
+
+.createButton:hover {
+  opacity: 1;
+  font-size: 1.2rem;
+}
+
 </style>

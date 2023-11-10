@@ -1,10 +1,12 @@
 <template>
-  <div class="row align-items-center justify-content-center mx-1">
+  <div v-if="card" class="row align-items-center justify-content-center mx-1">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
-        <img class="img-fluid borderRadius shadow cardsBg"
-          :class="!activeDeck.id || deckCard?.find(d => d.card.cardId == card.cardId) ? '' : 'card-in-deck'"
+        <img v-if="deckCard.length" class="img-fluid borderRadius shadow cardsBg"
+          :class="inDeck ? 'card-in-deck' : 'card-not-in-deck' "
+          :src=card.image_uris?.normal :title="card.name">
+        <img v-else class="img-fluid borderRadius shadow cardsBg"
           :src=card.image_uris?.normal :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
@@ -68,6 +70,7 @@ export default {
       user: computed(() => AppState.account),
       deckCard: computed(() => AppState.deckCards),
       profileCard: computed(() => AppState.activeProfile),
+      inDeck: computed(() => AppState.deckCards.find((c) => c.cardId == props.card.cardId)),
       reset() {
         AppState.activeCard = props.card
         logger.log('Active Card:', props.card)
@@ -87,12 +90,13 @@ export default {
           event.stopPropagation()
           event.stopImmediatePropagation()
           let deckId = AppState.activeDeck.id
-          const DeckCard = {}
-          DeckCard.cardId = card.cardId
-          DeckCard.name = card.name
-          DeckCard.cardId = card.cardId
-          DeckCard.deckId = deckId
-          DeckCard.accountId = AppState.user.id
+          const DeckCard = {
+          cardId : card.cardId,
+          name : card.name,
+          cardId : card.cardId,
+          deckId : deckId,
+          accountId : AppState.user.id,
+          }
           // if ()
           await deckCardsService.createDeckCard(DeckCard)
         } catch (error) {
@@ -106,7 +110,7 @@ export default {
           if (!yes) {
             return;
           }
-          // NOTE this prop      VVVV     was misspelled as deckcard.id 
+          // NOTE this prop      VVVV     was misspelled as deckcard.id
           const cardId = props.deckCard.id;
           await deckCardsService.removeCard(cardId);
         }
@@ -189,8 +193,12 @@ export default {
 }
 
 .card-in-deck {
-  // outline: 5px solid rgb(155, 200, 232);
-  opacity: .5;
+  border: 5px solid rgb(0, 0, 0);
+  opacity: 1;
+}
+
+.card-not-in-deck {
+  opacity: .6;
 }
 
 .deckToolTip:hover .tooltiptext {

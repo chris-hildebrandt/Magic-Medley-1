@@ -27,7 +27,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Profile', params: { profileId: account } }">
+          <router-link :to="{ name: 'Profile', params: { profileId: account.id } }">
             <div class="my-2 btn deckText text-uppercase borderRadius buttonPadding accountImage">
             </div>
           </router-link>
