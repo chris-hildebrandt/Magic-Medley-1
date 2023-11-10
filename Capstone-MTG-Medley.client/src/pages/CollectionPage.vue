@@ -91,7 +91,7 @@ import { AppState } from '../AppState.js';
 import { cardsService } from '../services/CardsService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
-import SearchedCards from '../components/SearchedCards.vue';
+import SearchedCards from '../components/Search/SearchedCards.vue';
 import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";

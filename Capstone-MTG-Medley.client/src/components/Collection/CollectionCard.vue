@@ -1,7 +1,7 @@
 <template>
   <div v-if="card" class="row align-items-center justify-content-center mx-1">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-      :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
+      :data-bs-target="'#card-modal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img v-if="deckCard.length" class="img-fluid borderRadius shadow cardsBg"
           :class="inDeck ? 'card-in-deck' : 'card-not-in-deck' "
@@ -45,9 +45,6 @@
     </div>
   </div>
   <!-- NOTE COLLECTION CARD MODAL -->
-  <Modal :id="'collectionCardModal' + card.cardId">
-    <CardModal :card="card" />
-  </Modal>
 
 </template>
 <!-- </draggable> -->

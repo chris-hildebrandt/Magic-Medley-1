@@ -41,8 +41,8 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { AppState } from "../AppState";
-import { AuthService } from "../services/AuthService";
+import { AppState } from "../../AppState";
+import { AuthService } from "../../services/AuthService";
 export default {
   setup() {
     return {

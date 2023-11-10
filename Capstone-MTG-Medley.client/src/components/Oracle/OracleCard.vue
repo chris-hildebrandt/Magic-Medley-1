@@ -25,11 +25,11 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { AppState } from "../AppState";
-import { Card } from "../models/Card";
-import { cardsService } from "../services/CardsService";
-import { logger } from "../utils/Logger";
-import Pop from "../utils/Pop";
+import { AppState } from "../../AppState";
+import { Card } from "../../models/Card";
+import { cardsService } from "../../services/CardsService";
+import { logger } from "../../utils/Logger";
+import Pop from "../../utils/Pop";
 
 
 export default {

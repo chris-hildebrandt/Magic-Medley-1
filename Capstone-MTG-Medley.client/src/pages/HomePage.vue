@@ -37,10 +37,9 @@
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { onMounted } from "vue";
-import SearchedCards from "../components/SearchedCards.vue";
-import FooterNav from "../components/FooterNav.vue";
 import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
+import FooterNav from "../components/Navbar/FooterNav.vue";
 
 export default {
   setup() {
@@ -90,7 +89,7 @@ export default {
 
     };
   },
-  components: { SearchedCards, FooterNav },
+  components: { FooterNav },
 };
 </script>
 

@@ -25,10 +25,15 @@
 </template>
 
 <script>
+import Login from '../Login/Login.vue';
+import ContactUsModal from '../Modals/ContactUsModal.vue';
+import FaqsModalGroup from '../Modals/FaqsModalGroup.vue';
+
 export default {
-  setup() {
-    return {};
-  },
+    setup() {
+        return {};
+    },
+    components: { ContactUsModal, FaqsModalGroup, Login }
 };
 </script>
 

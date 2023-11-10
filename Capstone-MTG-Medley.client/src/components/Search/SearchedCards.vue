@@ -6,12 +6,6 @@
         <img @load="imgLoaded = true" class="img-fluid fix-edge shadow" :src="card.image_uris.normal"
           :title="card.name" />
       </div>
-      <!-- <div v-else class="">
-        <img
-          class="img-fluid shadow cardsBg"
-          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-        />
-      </div> -->
     </div>
   </div>
   <Modal :id="'cardModal' + card.id">
@@ -41,7 +35,6 @@ export default {
       },
       async getCardByOracle() {
         try {
-          // logger.log(" Id", props.card.oracleId);
           await cardsService.getCardByOracle(props.card.oracle_id);
         } catch (error) {
           logger.error(error);

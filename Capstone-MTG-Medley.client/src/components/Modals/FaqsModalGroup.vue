@@ -949,12 +949,12 @@
               <b class="bg-dark text-light rounded px-2">BASIC LAND</b>
               <p>There are five types of basic lands: Plains, Island, Swamp, Mountain, and Forest. Any land with the
                 Plains subtype has the intrinsic ability “: Add <img class="symbol pb-1"
-                  src="../assets/img/mana-white.png" alt="">” (white
-                mana). Similarly, Islands tap for <img class="symbol pb-1" src="../assets/img/mana-blue.png"
+                  src="../../assets/img/mana-white.png" alt="">” (white
+                mana). Similarly, Islands tap for <img class="symbol pb-1" src="../../assets/img/mana-blue.png"
                   alt="">(blue mana),
-                Swamps tap for <img class="symbol pb-1" src="../assets/img/mana-black.png" alt="">(black mana),
-                Mountains tap for <img class="symbol pb-1" src="../assets/img/mana-red.png" alt="">(red mana), and
-                Forests tap for <img class="symbol pb-1" src="../assets/img/mana-green.png" alt="">(green mana). If an
+                Swamps tap for <img class="symbol pb-1" src="../../assets/img/mana-black.png" alt="">(black mana),
+                Mountains tap for <img class="symbol pb-1" src="../../assets/img/mana-red.png" alt="">(red mana), and
+                Forests tap for <img class="symbol pb-1" src="../../assets/img/mana-green.png" alt="">(green mana). If an
                 effect refers to a “basic land card,” it's referring to a card with the words “basic land” on its type
                 line (basic is a supertype). Other lands are often referred to as “nonbasic lands.”</p>
             </li>
@@ -1440,25 +1440,25 @@ export default {
 }
 
 .karn-img {
-  background-image: url(../assets/img/transparents/karn.png);
+  background-image: url(../../assets/img/karn-img);
   background-position: top;
   background-size: cover;
 }
 
 .teferi-img {
-  background-image: url(../assets/img/transparents/teferi.png);
+  background-image: url(../../assets/img/transparents/teferi.png);
   background-position: top;
   background-size: cover;
 }
 
 .tower-img {
-  background-image: url(../assets/img/transparents/crystal-tower.png);
+  background-image: url(../../assets/img/transparents/crystal-tower.png);
   background-position: top;
   background-size: cover;
 }
 
 .elspeth-img {
-  background-image: url(../assets/img/transparents/elspeth.png);
+  background-image: url(../../assets/img/transparents/elspeth.png);
   background-position: top;
   background-size: cover;
 }
