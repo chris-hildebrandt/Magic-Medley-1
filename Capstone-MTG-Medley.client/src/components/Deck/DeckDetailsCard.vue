@@ -44,7 +44,6 @@ import { cardsService } from "../services/CardsService";
 import { deckCardsService } from "../services/DeckCardsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
-import Modal from "./Modal.vue";
 
 
 export default {
@@ -90,7 +89,6 @@ export default {
       }
     };
   },
-  components: { Modal }
 }
 
 </script>

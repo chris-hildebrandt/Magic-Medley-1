@@ -6,11 +6,14 @@
 
 
   <!-- SECTION Profile Details -->
-  <div class="row cover-img ">
-    <div class="col-4 profile-details anchor-point">
-      <div v-if="isAccount" title="Edit Account" class="edit-btn">
-        <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class=" mdi mdi-pen p-1"></i>
-        </router-link>
+  <div class="row cover-img">
+    <div class="col-12 col-md-4 profile-details anchor-point">
+      <div class="row">
+        <!-- AVATAR -->
+        <div v-if="isAccount" title="Edit Account" class="edit-btn col-3">
+          <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class=" mdi mdi-pen p-1"></i>
+          </router-link>
+        </div>
       </div>
       <img class="img-fluid profile-img" :src="profile.picture" alt="" />
       <div class="glass-card rounded p-3 my-3">
@@ -43,7 +46,27 @@
         </form>
         <!-- NOTE we have no bio to add -->
         <!-- <p>{{ profile.bio }}</p> -->
-        <p>{{profile.bio}}</p>
+        <p class="fs-2">Bio: <i @click="editProfile.bio = true" title="Edit bio" role="button" type="button" v-if="isAccount && !editProfile.bio" class="fs-5 mdi mdi-dots-horizontal p-1"></i><i @click="editProfile.bio = false" title="Edit bio" role="button" type="button" v-if="isAccount && editProfile.bio" class="fs-5 mdi mdi-dots-horizontal p-1"></i></p>
+        <div v-if="!editProfile.bio">
+          <p>{{profile.bio}}</p>
+        </div>
+        <div class="row" v-else>
+          <form @submit.prevent="editMyProfile()">
+            <div class=" input-group col-10 col-md-9 col-lg-8 col-xl-7 col-xxl-6 d-flex align-items-center ">
+              <div class="row form-floating">
+                <textarea style="height: 15rem" class="col-12 bg-dark form-control pt-4" rows="10" id="profileBio" v-model="editable.bio"></textarea>
+                <label class="form-label text-shadow ps-4 fs-6" for="profileBio">Edit Bio...</label>
+                <div class="col-12">
+                  <div class="row justify-content-end">
+                    <span id="editEmailInline" class="form-text text-light ps-3 text-shadow"> Max 500 characters.</span>
+                    <button @click="editable.bio = null" title="reset" role="button" type="button" class="bg-lightish justify-content-center col-6 col-md-4 col-xl-2 fs-5 input-group-text">Clear</button>
+                    <button title="submit form" type="submit" class="bg-lightish fs-5 col-6 col-md-4 col-xl-2 input-group-text justify-content-center">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -273,8 +296,11 @@ export default {
   max-height: 100vh;
 }
 
-.profile-details {
-  margin-top: 10vh;
+@media screen and (max-width: 600px) {
+  .profile-details {
+    margin-top: 10vh;
+  }
+
 }
 
 .profile-decks {
